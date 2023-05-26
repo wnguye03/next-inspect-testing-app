@@ -1,5 +1,6 @@
 import MemberCard from '../components/MemberCard';
 import ClientComponent from '../components/ClientComponent';
+import Form from '../components/Form';
 
 
 async function getMembers() {
@@ -35,7 +36,7 @@ export default async function Page() {
       
       <ClientComponent/>
       
-      
+      <Form/>
       
       
       

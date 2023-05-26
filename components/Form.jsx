@@ -1,11 +1,12 @@
 import React from 'react'
 
-const Form = (handleSubmit) => {
+const Form = () => {
+  // reconfigure to be able to use hooks
   return (
     <section>
-      <form action="" onSubmit={handleSubmit}>
-        <input placeholder='first name'/>
-        <input placeholder='last name'/>
+      <form action="" onSubmit={()=> {}}>
+        <input placeholder='first name' value={inputValue} onChange={handleInputChange}/>
+        {/* <input placeholder='last name'/> */}
       </form>
     </section>
   )
