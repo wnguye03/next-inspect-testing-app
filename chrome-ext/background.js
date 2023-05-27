@@ -19,3 +19,5 @@ chrome.runtime.onConnect.addListener(devToolsConnection => {
         devToolsConnection.onMessage.removeListener(devToolsListener);
     });
 });
+
+

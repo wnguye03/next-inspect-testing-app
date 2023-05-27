@@ -1,4 +1,5 @@
 let youClickedOn; 
+let count = 1;
 chrome.devtools.panels.create("NextInspect Network", "icon.png", "panel.html", panel => {
     // code invoked on panel creation
     // onshown.addListener is fired when the user switches to the panel
@@ -17,7 +18,28 @@ chrome.devtools.panels.create("NextInspect Network", "icon.png", "panel.html", p
             chrome.devtools.inspectedWindow.eval('alert("Hello from the DevTools Extension");');
 
 
-        });             
+        }); 
+        chrome.devtools.network.onRequestFinished.addListener((
+            function(request){
+                if(request){
+                    // chrome.runtime.sendMessage({
+                    //     // sends one time json from scipt to extension
+                    //       done: true,
+                    //     },
+                    //     response => {
+                    //       console.log(response);
+                    //     }
+                    // );
+                    let parsed = JSON.stringify(request);
+                    if (youClickedOn) {
+                        youClickedOn.innerHTML += `REQUEST NUMBER ${count} : ${parsed}`;
+                        count+=1;
+                    }
+                    // chrome.devtools.inspectedWindow.eval('alert("HUZZAH")')
+                }  
+            }
+        ))
+                    
     });
 });
 
@@ -26,19 +48,26 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     // onMessage event is fired when postMessage is called by other end of the port
     // look into onMessageExternal for our Nextjs express server
     if (sender.tab && request.click == true) {
-        let logHarLog;
-        chrome.devtools.network.getHAR(function (harLog) {
-          // Handle the HAR log
-          logHarLog = harLog
-        });
+        // let logHarLog;
+       
         if (youClickedOn) {
             youClickedOn.innerHTML = `You clicked on position (${request.xPosition}, ${request.yPosition}) in the inspected page.`;
         }
         sendResponse({
             xPosition: request.xPosition,
             yPosition: request.yPosition,
-            logHarLog: 1
         });
+    }
+
+    // receiving network request info
+
+    if (sender.tab && request.done == true){
+        if (youClickedOn) {
+            youClickedOn.innerHTML = `HUZZAH`;
+        }
+        sendResponse({
+            success: "HUZZAH"
+        })
     }
 });
 
