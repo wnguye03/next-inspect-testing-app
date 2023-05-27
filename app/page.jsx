@@ -36,7 +36,7 @@ export default async function Page() {
       
       <ClientComponent/>
       
-      <Form/>
+   
       
       
       
