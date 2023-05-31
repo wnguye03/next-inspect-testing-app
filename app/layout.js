@@ -11,9 +11,9 @@ export default function RootLayout({ children }) {
  return (
     <html lang="en">
       <body>
-        <div className='main'>
+        {/* <div className='main'>
           <div className = "gradient"/>
-        </div>
+        </div> */}
         <main>
           {children}
           <Script src='../../script.js' strategy='beforeInteractive/'/>
