@@ -1,5 +1,7 @@
 
 import AllMembersCard from "@/components/AllMembersCard";
+import NewMemberForm from "@/components/NewMemberForm";
+import AllRamensCard from "@/components/AllRamensCard";
 
 const allRequestsPage = () => {
   return (
@@ -12,6 +14,7 @@ const allRequestsPage = () => {
         </div>
         <div id="server-fetch-post-get" className="border-2 border-pink-200 p-5">
           <h1> Request type: server-fetch-post-get </h1>
+          <NewMemberForm/>
         </div>
         <div id="server-fetch-patch-get" className="border-2 border-pink-200 p-5">
           <h1> Request type: server-fetch-patch-get </h1>
@@ -25,12 +28,15 @@ const allRequestsPage = () => {
         <h1> Client Components: </h1>
         <div id="client-fetch-get" className="border-2 border-pink-200 p-5">
           <h1> Request type: client-fetch-get </h1>
+          <AllRamensCard/>
         </div>
         <div id="client-fetch-post-get" className="border-2 border-pink-200 p-5">
           <h1> Request type: client-fetch-post-get </h1>
+          
         </div>
         <div id="client-fetch-patch-get" className="border-2 border-pink-200 p-5">
           <h1> Request type: client-fetch-patch-get </h1>
+          
         </div>
         <div id="client-fetch-delete-get" className="border-2 border-pink-200 p-5">
           <h1> Request type: client-fetch-delete-get </h1>

@@ -1,6 +1,5 @@
 import MemberCard from '../components/MemberCard';
 import ClientComponent from '../components/ClientComponent';
-import Form from '../components/Form';
 
 
 async function getMembers() {
