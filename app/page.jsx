@@ -1,44 +1,52 @@
-import MemberCard from '../components/MemberCard';
-import ClientComponent from '../components/ClientComponent';
+import AllMembersCard from "@/components/AllMembersCard";
+import AllRamensCard from "@/components/AllRamensCard";
+import RenderCountCard from "@/components/RenderCountCard";
 
-
-async function getMembers() {
-  try {
-    const res = await fetch('http://localhost:3000/api/member');
-    console.log("success");
-    return res.json();
-  } catch (error) {
-    console.log(error);
-  }
-  
-}
- 
-export default async function Page() {
-  const data = await getMembers();
-
-  
- 
-  console.log(data);
+const allRequestsPage = () => {
   return (
-    <div className='flex flex-col mt-10 gap-10'>
-    
-     
-      {data.map((member) => {
-        return <MemberCard key={member._id} firstName={member.firstName} lastName={member.lastName}/>
-
-      })}
-      {/* <MemberCard firstName={member1FN} lastName={member1LN}/>
-      <MemberCard firstName={member2FN} lastName={member2LN}/>
-      <MemberCard firstName={member3FN} lastName={member3LN}/>
-      <MemberCard firstName={member4FN} lastName={member4LN}/>
-      <MemberCard firstName={member5FN} lastName={member5LN}/> */}
-      
-      <ClientComponent/>
-      
-      
-      
-      
+    <div className="grid grid-cols-2 gap-5 m-10 ">
+      <div className="flex flex-col gap-5 border-2 border-purple-500 p-5 ">
+        <h1> Server Components: </h1>
+        <div id="server-fetch-get" className="border-2 border-pink-200 p-5">
+          <h1> Request type: server-fetch-get </h1>
+          <AllMembersCard/>
+        </div>
+        {/* <div id="server-fetch-post-get" className="border-2 border-pink-200 p-5">
+          <h1> Request type: server-fetch-post </h1>
+          
+        </div> */}
+        <div id="server-fetch-patch-get" className="border-2 border-pink-200 p-5">
+          <h1> Request type: server-fetch-patch-get </h1>
+          
+          <RenderCountCard/>
+        </div>
+        {/* <div id="server-fetch-delete-get" className="border-2 border-pink-200 p-5">
+          <h1> Request type: server-fetch-delete-get </h1>
+        </div> */}
+        
+      </div>
+      <div className="flex flex-col gap-5 border-2 border-indigo-500 p-5">
+        <h1> Client Components: </h1>
+        <div id="client-fetch-get" className="border-2 border-pink-200 p-5">
+          <h1> Request type: client-fetch-get with update button that makes client-fetch-patch-get </h1>
+          <AllRamensCard/>
+          
+        </div>
+        {/* <div id="client-fetch-post-get" className="border-2 border-pink-200 p-5">
+          <h1> Request type: client-fetch-post-get </h1>
+          
+        </div>
+        <div id="client-fetch-patch-get" className="border-2 border-pink-200 p-5">
+          <h1> Request type: client-fetch-patch-get </h1>
+          
+        </div>
+        <div id="client-fetch-delete-get" className="border-2 border-pink-200 p-5">
+          <h1> Request type: client-fetch-delete-get </h1>
+        </div> */}
+      </div>
       
     </div>
   )
 }
+
+export default allRequestsPage;

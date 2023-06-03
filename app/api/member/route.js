@@ -29,3 +29,15 @@ export const GET = async (req) => {
     return new Response('Failed to get all members', {status: 500})
   }
 }
+export const PATCH = async (req) => {
+  try{
+    await connectToDB();
+    const filter = {_id: '646be45a8dc55b0575cf2bc9'};
+    await Member.findOneAndUpdate(filter, {$inc: {renderCount: 1}});
+    return new Response(('successfully updated ramen flavor'), {status: 201});
+  }  catch(err){
+    return new Response('Failed to update Ramen flavor', {status: 500})
+  }
+}
+
+
