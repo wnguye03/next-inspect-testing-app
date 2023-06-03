@@ -9,6 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@opentelemetry/exporter-trace-otlp-http": "^0.39.1",
+    "@opentelemetry/resources": "^1.13.0",
+    "@opentelemetry/sdk-node": "^0.39.1",
+    "@opentelemetry/sdk-trace-base": "^1.13.0",
+    "@opentelemetry/semantic-conventions": "^1.13.0",
     "autoprefixer": "10.4.14",
     "eslint": "8.41.0",
     "eslint-config-next": "13.4.3",
