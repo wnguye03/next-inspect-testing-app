@@ -11,14 +11,14 @@ async function getRamens() {
   }
 }
 
-async function updateFlavor(update) {
+async function updateFlavor(id, flavor) {
   try {
-    await fetch('http://localhost:3000/api/ramen', {
+    await fetch(`http://localhost:3000/api/ramen/${id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(update)
+      body: JSON.stringify({flavor})
     });
 
     console.log("success");
@@ -34,8 +34,9 @@ const AllRamensCard = async () => {
     <div className="border-2 border-orange-400"> 
       <h1> AllRamensCard Component</h1>
       {data.map((ramen) => {
+        console.log(ramen._id)
         return (
-          <RamenCard key={ramen._id} flavor={ramen.flavor} updateFlavor={updateFlavor}/>
+          <RamenCard key={ramen._id} id={ramen._id}flavor={ramen.flavor} updateFlavor={updateFlavor}/>
           // <RamenCard key={ramen._id} flavor={ramen.flavor}/>
         )
       })}

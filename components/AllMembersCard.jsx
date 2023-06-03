@@ -18,8 +18,7 @@ const AllMembersCard = async () => {
       {data.map((member) => {
         return (
           <p key={member._id} className="border-2 border-green-200">
-            {member.firstName} 
-            {member.lastName}
+            {member.firstName} {member.lastName} {member._id} {member.renderCount}
           </p>
         )
       })}

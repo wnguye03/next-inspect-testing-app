@@ -8,7 +8,6 @@ const RamenSchema = new Schema({
   }
 });
 
-// on every SSR, add false value with unique id, then update prev if it exists, and delete the first 
 
 const Ramen = models.Ramen || model("Ramen", RamenSchema);
 

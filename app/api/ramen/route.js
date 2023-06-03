@@ -1,5 +1,5 @@
 import {connectToDB} from '../../../utils/database.js';
-import Ramen from '../../../models/ssrCount.js';
+import Ramen from '../../../models/ramen.js';
 
 export const POST = async (req) => {
   const {flavor} = await req.json();
